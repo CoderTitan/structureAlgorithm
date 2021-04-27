@@ -7,7 +7,7 @@
 
 import Cocoa
 
-class SingleLinkList<E: Equatable>: AbstractList<E> {
+class SingleLinkList<E: Comparable>: AbstractList<E> {
 
     fileprivate var first: ListNode<E>?
     
@@ -25,7 +25,7 @@ class SingleLinkList<E: Equatable>: AbstractList<E> {
      * @param index
      * @return
      */
-    override func get(index: Int) -> E? {
+    override func get(_ index: Int) -> E? {
         let node = getNode(index)
         return node?.element
     }
@@ -45,6 +45,23 @@ class SingleLinkList<E: Equatable>: AbstractList<E> {
         let oldElement = current?.element
         current?.element = element
         return oldElement
+    }
+    
+    /**
+     * 是否包含某个元素
+     * @param element
+     * @return
+     */
+    override func contains(_ element: E) -> Bool {
+        return indexOf(element) != -1
+    }
+
+    /**
+     * 添加元素到尾部
+     * @param element
+     */
+    override func add(_ element: E) {
+        add(by: count, element: element)
     }
     
     /**
@@ -100,11 +117,11 @@ class SingleLinkList<E: Equatable>: AbstractList<E> {
                 return i
             }
             if node?.next == nil {
-                return elementNotFound
+                return Statical.notFound
             }
             node = node?.next
         }
-        return elementNotFound
+        return Statical.notFound
     }
     
     
@@ -182,6 +199,40 @@ extension SingleLinkList {
             fast = fast?.next?.next
         }
         return false
+    }
+    
+    /// 存在一个按升序排列的链表，给你这个链表的头节点 head ，请你删除所有重复的元素，使每个元素 只出现一次 。
+    func deleteDuplicates(_ head: ListNode<E>?) -> ListNode<E>? {
+        if head == nil { return head }
+        
+        var current = head
+        while current?.next != nil {
+            if current?.element == current?.next?.element {
+                current?.next = current?.next?.next
+            } else {
+                current = current?.next
+            }
+        }
+        return head
+    }
+    
+    /// 将两个升序链表合并为一个新的 升序 链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。
+    func mergeTwoLists(_ l1: ListNode<E>?, _ l2: ListNode<E>?) -> ListNode<E>? {
+        let node1 = l1
+        var node2 = l2
+        
+        while node1 != nil && node2 != nil {
+            if let ele1 = node1?.element, let ele2 = node2?.element {
+                if ele1 < ele2 {
+                    node2 = node2?.next
+                } else {
+                    node1?.next = ListNode(element: node2?.element, next: node1?.next)
+                    node2 = node2?.next
+                }
+            }
+        }
+        
+        return node1
     }
 }
 

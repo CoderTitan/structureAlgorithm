@@ -7,7 +7,7 @@
 
 import Cocoa
 
-class AbstractList<E: Equatable>: List<E> {
+class AbstractList<E: Comparable>: List<E> {
 
     /**
      * 元素的数量

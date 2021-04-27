@@ -9,7 +9,7 @@ import Cocoa
 
 
 
-class ListNode<E>: NSObject {
+class ListNode<E: Comparable>: NSObject {
 
     var element: E?
     var prev: ListNode?

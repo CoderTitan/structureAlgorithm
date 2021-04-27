@@ -7,7 +7,7 @@
 
 import Cocoa
 
-class DoubleLinkList<E: Equatable>: AbstractList<E> {
+class DoubleLinkList<E: Comparable>: AbstractList<E> {
 
     fileprivate var first: ListNode<E>?
     fileprivate var last: ListNode<E>?
@@ -33,7 +33,7 @@ class DoubleLinkList<E: Equatable>: AbstractList<E> {
      * @param index
      * @return
      */
-    override func get(index: Int) -> E? {
+    override func get(_ index: Int) -> E? {
         let node = getNode(index)
         return node?.element
     }
@@ -53,6 +53,23 @@ class DoubleLinkList<E: Equatable>: AbstractList<E> {
         let oldElement = current?.element
         current?.element = element
         return oldElement
+    }
+    
+    /**
+     * 是否包含某个元素
+     * @param element
+     * @return
+     */
+    override func contains(_ element: E) -> Bool {
+        return indexOf(element) != -1
+    }
+
+    /**
+     * 添加元素到尾部
+     * @param element
+     */
+    override func add(_ element: E) {
+        add(by: count, element: element)
     }
     
     /**
@@ -129,11 +146,11 @@ class DoubleLinkList<E: Equatable>: AbstractList<E> {
                 return i
             }
             if node?.next == nil {
-                return elementNotFound
+                return Statical.notFound
             }
             node = node?.next
         }
-        return elementNotFound
+        return Statical.notFound
     }
     
     

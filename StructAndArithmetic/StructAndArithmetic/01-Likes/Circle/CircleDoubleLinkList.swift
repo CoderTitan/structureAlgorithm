@@ -1,5 +1,5 @@
 //
-//  CircleSingleLineList.swift
+//  CircleDoubleLinkList.swift
 //  StructAndArithmetic
 //
 //  Created by zl on 2021/4/10.
@@ -7,16 +7,25 @@
 
 import Cocoa
 
-class CircleSingleLineList<E: Equatable>: AbstractList<E> {
-    
+class CircleDoubleLinkList<E: Comparable>: AbstractList<E> {
+
     fileprivate var first: ListNode<E>?
+    fileprivate var last: ListNode<E>?
+    fileprivate var current: ListNode<E>?
     
     /**
      * 清除所有元素
      */
     override func clear() {
-        count = 0
+        var node = first
+        for _ in 0..<count {
+            node = node?.next
+            node?.prev = nil
+        }
+        
         first = nil
+        last = nil
+        count = 0
     }
     
     /**
@@ -24,7 +33,7 @@ class CircleSingleLineList<E: Equatable>: AbstractList<E> {
      * @param index
      * @return
      */
-    override func get(index: Int) -> E? {
+    override func get(_ index: Int) -> E? {
         let node = getNode(index)
         return node?.element
     }
@@ -40,9 +49,9 @@ class CircleSingleLineList<E: Equatable>: AbstractList<E> {
             return nil
         }
         
-        let current = getNode(index)
-        let oldElement = current?.element
-        current?.element = element
+        let currentNode = getNode(index)
+        let oldElement = currentNode?.element
+        currentNode?.element = element
         return oldElement
     }
     
@@ -56,14 +65,27 @@ class CircleSingleLineList<E: Equatable>: AbstractList<E> {
             return
         }
         
-        if index == 0 {
-            let newFirst = ListNode(element: element, next: first)
-            let last = count == 0 ? first : getNode(count - 1)
-            last?.next = newFirst
-            first = newFirst
+        if index == count {
+            let oldLast = last
+            last = ListNode(element: element, next: first, prev: oldLast)
+            if oldLast == nil {
+                first = last
+                first?.next = last
+                last?.prev = first
+            } else {
+                oldLast?.next = last
+                first?.prev = last
+            }
         } else {
-            let befer = getNode(index - 1)
-            befer?.next = ListNode(element: element, next: befer?.next)
+            let currentNode = getNode(index)
+            let befer = currentNode?.prev
+            let node = ListNode(element: element, next: currentNode, prev: befer)
+            
+            currentNode?.prev = node
+            befer?.next = currentNode
+            if currentNode == first {
+                first = node
+            }
         }
         count += 1
     }
@@ -78,22 +100,26 @@ class CircleSingleLineList<E: Equatable>: AbstractList<E> {
             return nil
         }
         
-        var node = first
-        if index == 0 {
-            if count == 1 {
-                first = nil
-            } else {
-                let last = count == 0 ? first : getNode(index - 1)
-                first = node?.next
-                last?.next = first
-            }
+        let currentNode = getNode(index)
+        if count == 1 {
+            first = nil
+            last = nil
         } else {
-            let befer = getNode(index - 1)
-            node = befer?.next
-            befer?.next = befer?.next?.next
+            let befer = currentNode?.prev
+            let after = currentNode?.next
+            
+            befer?.next = after
+            after?.prev = befer
+            if currentNode == first {
+                first = after
+            }
+            if currentNode == last {
+                last = befer
+            }
         }
+        
         count -= 1
-        return node?.element
+        return currentNode?.element
     }
     
     /**
@@ -108,11 +134,11 @@ class CircleSingleLineList<E: Equatable>: AbstractList<E> {
                 return i
             }
             if node?.next == nil {
-                return elementNotFound
+                return Statical.notFound
             }
             node = node?.next
         }
-        return elementNotFound
+        return Statical.notFound
     }
     
     
@@ -136,16 +162,26 @@ class CircleSingleLineList<E: Equatable>: AbstractList<E> {
     }
 }
 
-extension CircleSingleLineList {
+extension CircleDoubleLinkList {
     /// 获取index位置对应的节点对象
     fileprivate func getNode(_ index: Int) -> ListNode<E>? {
         if rangeCheck(index) {
             return nil
         }
+        
+        // 前半部分
+        if index < count >> 1 {
+            var node = first
+            for _ in 0..<index {
+                node = node?.next
+            }
+            return node
+        }
 
-        var node = first
-        for _ in 0..<index {
-            node = node?.next
+        // 后半部分
+        var node = last
+        for _ in (index+1..<count).reversed() {
+            node = node?.prev
         }
         return node
     }

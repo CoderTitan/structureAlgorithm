@@ -8,9 +8,7 @@
 import Cocoa
 
 
-class List<E: Equatable>: NSObject {
-    
-    let elementNotFound = -1
+class List<E: Comparable> {
     
     /**
      * 清除所有元素
@@ -53,7 +51,7 @@ class List<E: Equatable>: NSObject {
      * @param index
      * @return
      */
-    func get(index: Int) -> E? {
+    func get(_ index: Int) -> E? {
         return nil
     }
 
