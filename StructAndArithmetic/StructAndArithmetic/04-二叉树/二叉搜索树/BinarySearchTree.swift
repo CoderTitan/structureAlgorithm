@@ -13,6 +13,9 @@ class BinarySearchTree<E: Comparable> {
     fileprivate var size = 0
     fileprivate var root: Node<E>?
     
+    func setRoot(_ node: Node<E>?) {
+        root = node
+    }
     
     /// 元素数量
     func count() -> Int {
@@ -428,9 +431,185 @@ extension BinarySearchTree {
         return widthArr.max() ?? 0
     }
     
-    /// 
-}
+    /// 给定一个二叉树，判断其是否是一个有效的二叉搜索树。
+    /// 假设一个二叉搜索树具有如下特征：
+    ///  - 节点的左子树只包含小于当前节点的数。
+    ///  - 节点的右子树只包含大于当前节点的数。
+    ///  - 所有左子树和右子树自身必须也是二叉搜索树。
+    ///  - https://leetcode-cn.com/problems/validate-binary-search-tree
+    func isValidBST() -> Bool {
+        if root == nil { return true }
+        
+        var node = root
+        var stackList = [Node<E>?]()
+        stackList.append(node)
+        
+        while !stackList.isEmpty {
+            node = stackList.removeFirst()
+            let nodeValue = node?.element
+            
+            if let left = node?.left {
+                if left.element! > nodeValue! {
+                    return false
+                }
+                stackList.append(left)
+            }
+            if let right = node?.right {
+                if right.element! < nodeValue! {
+                    return false
+                }
+                stackList.append(right)
+            }
+        }
+        
+        return true
+    }
+    
+    /// 根据一棵树的前序遍历与中序遍历构造二叉树(迭代)
+    func buildTree(_ preorder: [Int], _ inorder: [Int]) -> Node<Int>? {
+        if preorder.count != inorder.count { return nil }
+        if preorder.count == 0 { return nil }
+        
+        let root = Node(element: preorder[0])
+        var stackList = [Node<Int>]()
+        stackList.append(root)
+        
+        var inorderIndex = 0
+        for i in 1..<preorder.count {
+            let preorderVal = preorder[i]
+            var node = stackList.last
+            
+            if node!.element != inorder[inorderIndex] {
+                let left = Node(element: preorderVal)
+                node?.left = left
+                stackList.append(left)
+            } else {
+                while !stackList.isEmpty && stackList.last!.element == inorder[inorderIndex] {
+                    node = stackList.removeLast()
+                    inorderIndex += 1
+                }
+                let right = Node(element: preorderVal)
+                node?.right = right
+                stackList.append(right)
+            }
+        }
+        
+        
+        return root
+    }
+    
+    /// 根据一棵树的前序遍历与中序遍历构造二叉树(递归)
+    func buildTreeNode(_ preorder: [Int], _ inorder: [Int]) -> Node<Int>? {
+        if preorder.count != inorder.count { return nil }
+        if preorder.count == 0 { return nil }
+        if preorder.count == 1 {
+            return Node(element: preorder[0])
+        }
+        
+        var root: Node<Int>?
+        let firstVal = preorder[0]
+        root = Node(element: firstVal)
+        
+        let subArr = inorder.split(separator: firstVal)
+        var leftInorder = [Int]()
+        var rightInorder = [Int]()
+        if subArr.count > 1 {
+            leftInorder = Array(subArr[0])
+            rightInorder = Array(subArr[1])
+        } else if subArr.count == 1 {
+            let oneArr = Array(subArr[0])
+            if oneArr.count > 0 {
+                if oneArr[0] > firstVal {
+                    rightInorder = oneArr
+                } else {
+                    leftInorder = oneArr
+                }
+            }
+        }
+        
+        let leftPreorder = preorder.filter({ leftInorder.contains($0) })
+        root?.left = buildTree(leftPreorder, leftInorder)
+        
+        let rightPreorder = preorder.filter({ rightInorder.contains($0) })
+        root?.right = buildTree(rightPreorder, rightInorder)
+        
+        return root
+    }
+    
+    /// 根据一棵树的后序遍历与中序遍历构造二叉树(迭代)
+    func buildTreeBind(_ inorder: [Int], _ postorder: [Int]) -> Node<Int>? {
+        if postorder.count != inorder.count { return nil }
+        if postorder.count == 0 { return nil }
+        
+        let root = Node(element: postorder[postorder.count - 1])
+        var stackList = [Node<Int>]()
+        stackList.append(root)
+        
+        var preorder = [Int]()
+        var inordere = [Int]()
+        postorder.reversed().forEach({ preorder.append($0) })
+        inorder.reversed().forEach({ inordere.append($0) })
+        
+        var inorderIndex = 0
+        for i in 1..<preorder.count {
+            let preorderVal = preorder[i]
+            var node = stackList.last
 
+            if node!.element != inordere[inorderIndex] {
+                let right = Node(element: preorderVal)
+                node?.right = right
+                stackList.append(right)
+            } else {
+                while !stackList.isEmpty && stackList.last!.element == inordere[inorderIndex] {
+                    node = stackList.removeLast()
+                    inorderIndex += 1
+                }
+                let left = Node(element: preorderVal)
+                node?.left = left
+                stackList.append(left)
+            }
+        }
+        
+        return root
+    }
+    
+    /// 最近公共祖先
+    func lowestCommonAncestor(lhs: E, rhs: E) -> E? {
+        let lhsNode = getNode(lhs)
+        let rhsNode = getNode(rhs)
+        if lhsNode == nil || rhsNode == nil { return nil }
+        
+        var first = lhsNode
+        var last = rhsNode
+        while first != nil {
+            while last != nil {
+                if first?.element == last?.element {
+                    return first?.element
+                }
+                last = last?.parent
+            }
+            last = rhsNode
+            first = first?.parent
+        }
+        
+        return nil
+    }
+}
+/**
+ ┌──12
+ │  └──10
+┌──11
+│  └──8
+┌──9
+│  │     ┌──6
+│  │  ┌──5
+│  │  │  │  ┌──3
+│  │  │  │  │  └──1
+│  │  │  └──2
+│  └──4
+7
+
+ */
 
 extension BinarySearchTree {
     /// 查找对应node

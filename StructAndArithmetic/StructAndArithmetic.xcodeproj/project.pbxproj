@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		780AB0832645382B00C7D6CF /* RedBlackTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780AB0822645382B00C7D6CF /* RedBlackTree.swift */; };
+		780AB0862645385E00C7D6CF /* BinaryBalanceTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780AB0852645385E00C7D6CF /* BinaryBalanceTree.swift */; };
+		780AB08A2645430000C7D6CF /* BinaryTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780AB0892645430000C7D6CF /* BinaryTree.swift */; };
+		781C0362263A85830045290F /* BinaryBalanceSearchTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781C0361263A85830045290F /* BinaryBalanceSearchTree.swift */; };
+		781C0366263A85CF0045290F /* TreeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781C0365263A85CF0045290F /* TreeNode.swift */; };
 		783089B426218F78002CDD2E /* CircleSingleLineList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783089B326218F78002CDD2E /* CircleSingleLineList.swift */; };
 		783089B726218F88002CDD2E /* CircleDoubleLinkList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783089B626218F88002CDD2E /* CircleDoubleLinkList.swift */; };
 		783089BA262191FA002CDD2E /* ListNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783089B9262191FA002CDD2E /* ListNode.swift */; };
@@ -46,6 +51,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		780AB0822645382B00C7D6CF /* RedBlackTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedBlackTree.swift; sourceTree = "<group>"; };
+		780AB0852645385E00C7D6CF /* BinaryBalanceTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryBalanceTree.swift; sourceTree = "<group>"; };
+		780AB0892645430000C7D6CF /* BinaryTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryTree.swift; sourceTree = "<group>"; };
+		781C0361263A85830045290F /* BinaryBalanceSearchTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryBalanceSearchTree.swift; sourceTree = "<group>"; };
+		781C0365263A85CF0045290F /* TreeNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeNode.swift; sourceTree = "<group>"; };
 		783089B326218F78002CDD2E /* CircleSingleLineList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleSingleLineList.swift; sourceTree = "<group>"; };
 		783089B626218F88002CDD2E /* CircleDoubleLinkList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleDoubleLinkList.swift; sourceTree = "<group>"; };
 		783089B9262191FA002CDD2E /* ListNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListNode.swift; sourceTree = "<group>"; };
@@ -64,7 +74,6 @@
 		787D2FC2261DF91C0033364A /* SingleLinkList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleLinkList.swift; sourceTree = "<group>"; };
 		78904841261EDB840092F866 /* DoubleLinkList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleLinkList.swift; sourceTree = "<group>"; };
 		78A62E81262E8088000D229B /* BinaryTreesPrint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryTreesPrint.swift; sourceTree = "<group>"; };
-		78A7A622262D8BBB00C0695A /* StructAndArithmetic-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "StructAndArithmetic-Bridging-Header.h"; sourceTree = "<group>"; };
 		78A7A624262D8E2C00C0695A /* InorderPrinter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InorderPrinter.swift; sourceTree = "<group>"; };
 		78BE8897261E87EB006D645A /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
 		78BE889B261E8821006D645A /* AbstractList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractList.swift; sourceTree = "<group>"; };
@@ -85,6 +94,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		780AB0812645380400C7D6CF /* 06-红黑树 */ = {
+			isa = PBXGroup;
+			children = (
+				780AB0822645382B00C7D6CF /* RedBlackTree.swift */,
+			);
+			path = "06-红黑树";
+			sourceTree = "<group>";
+		};
+		781C035C263A601E0045290F /* 05-AVL树 */ = {
+			isa = PBXGroup;
+			children = (
+				780AB0852645385E00C7D6CF /* BinaryBalanceTree.swift */,
+				781C0361263A85830045290F /* BinaryBalanceSearchTree.swift */,
+			);
+			path = "05-AVL树";
+			sourceTree = "<group>";
+		};
 		783089C42622D1BA002CDD2E /* 00-Public */ = {
 			isa = PBXGroup;
 			children = (
@@ -115,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				7855AC56262D2EA700FF5A51 /* Node.swift */,
+				781C0365263A85CF0045290F /* TreeNode.swift */,
 				7855AC5A262D313700FF5A51 /* BinaryTreeInfo.swift */,
 				7855AC66262D7E8500FF5A51 /* Printer */,
 			);
@@ -126,6 +153,7 @@
 			children = (
 				7855AC5E262D33E800FF5A51 /* BinarySearchTree.swift */,
 				784FAA8B26366B7100BC5636 /* BinaryTreeTest.swift */,
+				780AB0892645430000C7D6CF /* BinaryTree.swift */,
 			);
 			path = "二叉搜索树";
 			sourceTree = "<group>";
@@ -161,12 +189,13 @@
 			children = (
 				787D2FB9261DF8BF0033364A /* main.swift */,
 				784027E52626D34A00C8A88A /* CustomTest.swift */,
-				78A7A622262D8BBB00C0695A /* StructAndArithmetic-Bridging-Header.h */,
 				783089C42622D1BA002CDD2E /* 00-Public */,
 				787D2FC1261DF8DB0033364A /* 01-Likes */,
 				783089CB2622D805002CDD2E /* 02-栈 */,
 				78CECBB82627D9E500BEB594 /* 03-队列 */,
 				7855AC50262D26D400FF5A51 /* 04-二叉树 */,
+				781C035C263A601E0045290F /* 05-AVL树 */,
+				780AB0812645380400C7D6CF /* 06-红黑树 */,
 			);
 			path = StructAndArithmetic;
 			sourceTree = "<group>";
@@ -281,15 +310,19 @@
 				78BE8898261E87EB006D645A /* List.swift in Sources */,
 				784027E92626D51E00C8A88A /* LinkeExercises.swift in Sources */,
 				78A62E82262E8088000D229B /* BinaryTreesPrint.swift in Sources */,
+				781C0366263A85CF0045290F /* TreeNode.swift in Sources */,
 				7855AC5F262D33E800FF5A51 /* BinarySearchTree.swift in Sources */,
+				780AB0862645385E00C7D6CF /* BinaryBalanceTree.swift in Sources */,
 				784FAA8C26366B7100BC5636 /* BinaryTreeTest.swift in Sources */,
 				78CECBCF26281D5500BEB594 /* CircleDeque.swift in Sources */,
 				7855AC57262D2EA700FF5A51 /* Node.swift in Sources */,
+				781C0362263A85830045290F /* BinaryBalanceSearchTree.swift in Sources */,
 				78A7A625262D8E2C00C0695A /* InorderPrinter.swift in Sources */,
 				783089B426218F78002CDD2E /* CircleSingleLineList.swift in Sources */,
 				7855AC68262D7EBE00FF5A51 /* Printer.swift in Sources */,
 				783089BA262191FA002CDD2E /* ListNode.swift in Sources */,
 				78BE889C261E8821006D645A /* AbstractList.swift in Sources */,
+				780AB0832645382B00C7D6CF /* RedBlackTree.swift in Sources */,
 				783089B726218F88002CDD2E /* CircleDoubleLinkList.swift in Sources */,
 				78CECBCC26281D4700BEB594 /* CircleQueue.swift in Sources */,
 				783089CD2622D832002CDD2E /* Statck.swift in Sources */,
@@ -297,6 +330,7 @@
 				784027E62626D34A00C8A88A /* CustomTest.swift in Sources */,
 				78904842261EDB840092F866 /* DoubleLinkList.swift in Sources */,
 				78CECBC22627F0D600BEB594 /* SingleDeque.swift in Sources */,
+				780AB08A2645430000C7D6CF /* BinaryTree.swift in Sources */,
 				7855AC64262D7A2F00FF5A51 /* Extension.swift in Sources */,
 				78CECBBE2627E13A00BEB594 /* SingleQueue.swift in Sources */,
 				783089C62622D22E002CDD2E /* Statical.swift in Sources */,
@@ -428,7 +462,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/StructAndArithmetic/StructAndArithmetic-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -438,7 +472,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/StructAndArithmetic/StructAndArithmetic-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;

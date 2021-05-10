@@ -7,25 +7,11 @@
 
 import Foundation
 
-let tree = BinarySearchTree<Int>()
-
-//let arr = [38, 18, 4, 69, 85, 71, 34, 36, 29, 100]
-let arr = [7, 4, 9, 2, 5, 6, 8, 11, 1, 3, 10, 12]
-//let arr = [5, 4, 6, 3, 2, 7, 8]
+let tree = BinaryBalanceSearchTree()
+let arr = [33, 23, 45, 10, 28, 19, 56, 34, 8, 5, 4]
 for i in arr {
     tree.add(i)
 }
 BinaryTreesPrint.println(tree)
 
-//let contains = tree.contains(100)
-//print(contains)
-//print(tree.preorderForRecursion())
-//print(tree.preorderForEach())
-//print(tree.infixOrderForRecursion())
-print(tree.infixOrderForEach())
-//print(tree.epilogueForRecursion())
-//print(tree.epilogueForEach())
-//print(tree.levelOrderForEach())
-//print(tree.widthOfBinaryTree())
-
-
+let r = tree.root
