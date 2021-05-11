@@ -7,7 +7,7 @@
 
 import Cocoa
 
-class BinaryTree {
+class BinaryTree: NSObject {
 
     /// 元素数量
     var count = 0
@@ -135,8 +135,8 @@ extension BinaryTree {
         
         var tmpNode = node
         if tmpNode.twoChildren() {
-            // 找前寄结点
-            if let front = frontNode(tmpNode) {
+            // 找后继结点
+            if let front = behindRoot(tmpNode) {
                 // 值覆盖
                 tmpNode.val = front.val
                 // 删除前寄结点
@@ -157,7 +157,9 @@ extension BinaryTree {
             }
             
             // 平衡节点
-            afterRemove(tmpNode)
+            if let reNode = replacement {
+                afterRemove(reNode)
+            }
         } else if tmpNode.parent == nil {
             root = nil
             
@@ -197,9 +199,10 @@ extension BinaryTree: BinaryTreeProtocol {
     
     func string(node: Any?) -> String {
         if let n = node as? TreeNode {
-//            if let parent = n.parent {
-//                return "\(n.val)_p\(parent.val)"
-//            }
+            if let parent = n.parent {
+                let color = n.isRed ? "r" : "b"
+                return "\(n.val)_p\(parent.val)_\(color)"
+            }
             return "\(n.val)"
         }
         return "-"

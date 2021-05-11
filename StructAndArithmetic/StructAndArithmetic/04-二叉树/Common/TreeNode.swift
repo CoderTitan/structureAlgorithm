@@ -10,7 +10,7 @@ import Cocoa
 
 class TreeNode: Comparable {
     public var val: Int
-    public var isRed = false
+    public var isRed = true
     public var left: TreeNode?
     public var right: TreeNode?
     public var parent: TreeNode?
@@ -44,6 +44,17 @@ class TreeNode: Comparable {
     /// 当前节点是否是右节点
     func isRightChild() -> Bool {
         return parent != nil && parent?.right == self
+    }
+    
+    /// 获取叔父节点
+    func sibling() -> TreeNode? {
+        if isLeftChild() {
+            return parent?.right
+        }
+        if isRightChild() {
+            return parent?.left
+        }
+        return nil
     }
     
     /// 平衡因子
