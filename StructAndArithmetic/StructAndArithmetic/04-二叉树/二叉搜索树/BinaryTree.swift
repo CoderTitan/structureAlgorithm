@@ -7,7 +7,7 @@
 
 import Cocoa
 
-class BinaryTree: NSObject {
+class BinaryTree {
 
     /// 元素数量
     var count = 0
@@ -22,6 +22,12 @@ class BinaryTree: NSObject {
     /// 节点是否存在
     func contains(_ element: Int) -> Bool {
         return getNode(element) != nil
+    }
+    
+    /// 清除所有节点
+    func clear() {
+        root = nil
+        count = 0
     }
     
     /// 添加节点
@@ -125,6 +131,114 @@ extension BinaryTree {
         }
         
         return node
+    }
+    
+    /// 前序遍历(迭代)
+    func preorderForEach() -> [Int] {
+        if root == nil { return [] }
+        var node = root
+        var array = [Int]()
+        
+        let stack = Statck<TreeNode>()
+        stack.push(node)
+        
+        while !stack.isEmpty() {
+            node = stack.pop()
+            if let tmp = node?.val {
+                array.append(tmp)
+            }
+            
+            if let right = node?.right {
+                stack.push(right)
+            }
+            if let left = node?.left {
+                stack.push(left)
+            }
+        }
+        
+        return array
+    }
+    
+    /// 中序遍历(迭代)
+    func infixOrderForEach() -> [Int] {
+        if root == nil { return [] }
+        var node = root
+        var array = [Int]()
+        
+        let stack = Statck<TreeNode>()
+        while !stack.isEmpty() || node != nil {
+            while node != nil {
+                stack.push(node)
+                node = node?.left
+            }
+            
+            let peek = stack.pop()
+            if let element = peek?.val {
+                array.append(element)
+            }
+            node = peek?.right
+        }
+        
+        return array
+    }
+    
+    /// 后序遍历(迭代)
+    func epilogueForEach() -> [Int] {
+        if root == nil { return [] }
+        var node = root
+        var array = [Int]()
+        var tmpNode: TreeNode?
+        
+        let stack = Statck<TreeNode>()
+        stack.push(node)
+        
+        while !stack.isEmpty() {
+            let peek = stack.peek()
+            let isLeaf = peek?.isLeaf() ?? false
+            
+            // 栈顶节点是否是椰子节点, 上一次访问节点是否是栈顶节点的子节点
+            if isLeaf || tmpNode?.parent == peek {
+                node = stack.pop()
+                tmpNode = node
+                if let tmp = node?.val {
+                    array.append(tmp)
+                }
+            } else {
+                node = peek
+                if let right = node?.right {
+                    stack.push(right)
+                }
+                if let left = node?.left {
+                    stack.push(left)
+                }
+            }
+        }
+        
+        return array
+    }
+    
+    /// 层序遍历
+    func levelOrderForEach() -> [Int] {
+        var node = root
+        if node == nil { return [] }
+        var array = [Int]()
+        
+        let queueLink = SingleQueue<TreeNode>()
+        queueLink.enQueue(node)
+        while !queueLink.isEmpty() {
+            node = queueLink.deQueue()
+            if let element = node?.val {
+                array.append(element)
+            }
+            if let left = node?.left {
+                queueLink.enQueue(left)
+            }
+            if let right = node?.right {
+                queueLink.enQueue(right)
+            }
+        }
+        
+        return array
     }
 }
  
