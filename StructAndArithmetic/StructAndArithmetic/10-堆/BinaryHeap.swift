@@ -143,8 +143,7 @@ extension BinaryHeap {
         
         // 自下而上的下滤
         let lastIndex = valueArray.count >> 1 - 1
-        let range = 0...lastIndex
-        for i in range.reversed() {
+        for i in (0...lastIndex).reversed() {
             downUp(i)
         }
     }
