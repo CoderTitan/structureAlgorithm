@@ -7,7 +7,7 @@
 
 import Cocoa
 
-class TreeSet<E: Comparable>: Set<E> {
+class TreeSet<E: Hashable & Comparable>: Set<E> {
 
     fileprivate var tree = RedBlackTree()
     

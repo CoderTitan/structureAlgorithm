@@ -8,7 +8,7 @@
 import Cocoa
 
 
-class HashNode<K: NSObject, V: Comparable>: Comparable {
+class HashNode<K: Hashable, V: Comparable>: Comparable {
     public var key: K?
     public var val: V?
     public var isRed = true

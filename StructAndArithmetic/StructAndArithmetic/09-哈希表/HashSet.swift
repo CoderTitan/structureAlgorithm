@@ -1,58 +1,53 @@
 //
-//  ListSet.swift
+//  HashSet.swift
 //  StructAndArithmetic
 //
-//  Created by zl on 2021/5/11.
+//  Created by zl on 2021/7/21.
 //
 
 import Cocoa
 
-class ListSet<E: Hashable & Comparable>: Set<E> {
+class HashSet<E: Hashable & Comparable>: Set<E> {
 
-    fileprivate var list = DoubleLinkList<E>()
+    fileprivate let map = HashMap<E, E>()
     
     /// 元素个数
     override func size() -> Int {
-        return list.count
+        return map.count()
     }
     
     /// 是否为空
     override func isEmpty() -> Bool {
-        return list.isEmpty()
+        return map.isEmpty()
     }
     
     /// 清除所有元素
     override func clear() {
-        list.clear()
+        map.clear()
     }
     
     /// 是否包含某元素
     override func contains(_ val: E) -> Bool {
-        return list.contains(val)
+        return map.containsKey(key: val)
     }
     
     /// 添加元素
     override func add(val: E) {
-        if !list.contains(val) {
-            list.add(val)
-        }
+        map.put(key: val, val: nil)
     }
     
     /// 删除元素
+    @discardableResult
     override func remove(val: E) -> E? {
-        let index = list.indexOf(val)
-        if index > 0 {
-            return list.remove(index)
-        }
-        return nil
+        return map.remove(key: val)
     }
     
     /// 获取所有元素
     override func lists() -> [E] {
         var array = [E]()
-        for i in 0..<size() {
-            if let node = list.get(i) {
-                array.append(node)
+        map.traversal { val, _ in
+            if let v = val {
+                array.append(v)
             }
         }
         return array

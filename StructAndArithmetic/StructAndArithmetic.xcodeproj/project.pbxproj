@@ -35,6 +35,16 @@
 		7855AC68262D7EBE00FF5A51 /* Printer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7855AC67262D7EBE00FF5A51 /* Printer.swift */; };
 		7857C8ED264A88A000A3E5DB /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7857C8EC264A88A000A3E5DB /* Map.swift */; };
 		786C838D266DFE02005CF61D /* HeapSorted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786C838C266DFE02005CF61D /* HeapSorted.swift */; };
+		7877371926A83E1A00960668 /* HashSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7877371826A83E1A00960668 /* HashSet.swift */; };
+		7877371B26A8420E00960668 /* GenericUnionFind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7877371A26A8420E00960668 /* GenericUnionFind.swift */; };
+		7877371D26A919CD00960668 /* UnionFindNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7877371C26A919CD00960668 /* UnionFindNode.swift */; };
+		7877372026A94AD700960668 /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7877371F26A94AD700960668 /* Graph.swift */; };
+		7877372226A94B1500960668 /* WeightManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7877372126A94B1500960668 /* WeightManager.swift */; };
+		7877372426A94C0000960668 /* PathInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7877372326A94C0000960668 /* PathInfo.swift */; };
+		7877372626A94CD200960668 /* EdgeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7877372526A94CD200960668 /* EdgeInfo.swift */; };
+		7877372826A9532900960668 /* ListGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7877372726A9532900960668 /* ListGraph.swift */; };
+		7877372A26A9551D00960668 /* Vertex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7877372926A9551D00960668 /* Vertex.swift */; };
+		7877372C26A9556D00960668 /* Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7877372B26A9556D00960668 /* Edge.swift */; };
 		787D2FBA261DF8BF0033364A /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787D2FB9261DF8BF0033364A /* main.swift */; };
 		787D2FC3261DF91C0033364A /* SingleLinkList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787D2FC2261DF91C0033364A /* SingleLinkList.swift */; };
 		78904842261EDB840092F866 /* DoubleLinkList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78904841261EDB840092F866 /* DoubleLinkList.swift */; };
@@ -107,6 +117,16 @@
 		7855AC67262D7EBE00FF5A51 /* Printer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Printer.swift; sourceTree = "<group>"; };
 		7857C8EC264A88A000A3E5DB /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
 		786C838C266DFE02005CF61D /* HeapSorted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeapSorted.swift; sourceTree = "<group>"; };
+		7877371826A83E1A00960668 /* HashSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashSet.swift; sourceTree = "<group>"; };
+		7877371A26A8420E00960668 /* GenericUnionFind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericUnionFind.swift; sourceTree = "<group>"; };
+		7877371C26A919CD00960668 /* UnionFindNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnionFindNode.swift; sourceTree = "<group>"; };
+		7877371F26A94AD700960668 /* Graph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graph.swift; sourceTree = "<group>"; };
+		7877372126A94B1500960668 /* WeightManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightManager.swift; sourceTree = "<group>"; };
+		7877372326A94C0000960668 /* PathInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathInfo.swift; sourceTree = "<group>"; };
+		7877372526A94CD200960668 /* EdgeInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeInfo.swift; sourceTree = "<group>"; };
+		7877372726A9532900960668 /* ListGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListGraph.swift; sourceTree = "<group>"; };
+		7877372926A9551D00960668 /* Vertex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vertex.swift; sourceTree = "<group>"; };
+		7877372B26A9556D00960668 /* Edge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Edge.swift; sourceTree = "<group>"; };
 		787D2FB6261DF8BF0033364A /* StructAndArithmetic */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = StructAndArithmetic; sourceTree = BUILT_PRODUCTS_DIR; };
 		787D2FB9261DF8BF0033364A /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		787D2FC2261DF91C0033364A /* SingleLinkList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleLinkList.swift; sourceTree = "<group>"; };
@@ -261,6 +281,20 @@
 			path = "08-映射";
 			sourceTree = "<group>";
 		};
+		7877371E26A9242E00960668 /* 14-图 */ = {
+			isa = PBXGroup;
+			children = (
+				7877371F26A94AD700960668 /* Graph.swift */,
+				7877372726A9532900960668 /* ListGraph.swift */,
+				7877372126A94B1500960668 /* WeightManager.swift */,
+				7877372326A94C0000960668 /* PathInfo.swift */,
+				7877372526A94CD200960668 /* EdgeInfo.swift */,
+				7877372926A9551D00960668 /* Vertex.swift */,
+				7877372B26A9556D00960668 /* Edge.swift */,
+			);
+			path = "14-图";
+			sourceTree = "<group>";
+		};
 		787D2FAD261DF8BF0033364A = {
 			isa = PBXGroup;
 			children = (
@@ -281,6 +315,7 @@
 			isa = PBXGroup;
 			children = (
 				787D2FB9261DF8BF0033364A /* main.swift */,
+				7877371E26A9242E00960668 /* 14-图 */,
 				78D53AA826A57290001715E1 /* 13-并查集 */,
 				78DDC3DE26665A4F00803FC6 /* 12-排序 */,
 				780C30F52663789200E36067 /* 11-优先级队列 */,
@@ -360,6 +395,8 @@
 				78D53AB326A66EE8001715E1 /* UnionFind_QU_Rank_PC.swift */,
 				78D53AB526A672CF001715E1 /* UnionFind_QU_Rank_PS.swift */,
 				78D53AB726A67681001715E1 /* UnionFind_QU_Rank_PH.swift */,
+				7877371A26A8420E00960668 /* GenericUnionFind.swift */,
+				7877371C26A919CD00960668 /* UnionFindNode.swift */,
 			);
 			path = "13-并查集";
 			sourceTree = "<group>";
@@ -384,8 +421,9 @@
 		78EF76E7264D453E0086D887 /* 09-哈希表 */ = {
 			isa = PBXGroup;
 			children = (
-				7840817C264FA5E900774D2D /* HashMap.swift */,
 				7840817E264FABD800774D2D /* HashNode.swift */,
+				7840817C264FA5E900774D2D /* HashMap.swift */,
+				7877371826A83E1A00960668 /* HashSet.swift */,
 			);
 			path = "09-哈希表";
 			sourceTree = "<group>";
@@ -447,6 +485,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7877371B26A8420E00960668 /* GenericUnionFind.swift in Sources */,
 				78BE8898261E87EB006D645A /* List.swift in Sources */,
 				784027E92626D51E00C8A88A /* LinkeExercises.swift in Sources */,
 				78D53AAA26A572B0001715E1 /* UnionFind.swift in Sources */,
@@ -458,6 +497,7 @@
 				78D53AAE26A58009001715E1 /* UnionFind_QU.swift in Sources */,
 				780AB0862645385E00C7D6CF /* BinaryBalanceTree.swift in Sources */,
 				7857C8ED264A88A000A3E5DB /* Map.swift in Sources */,
+				7877372026A94AD700960668 /* Graph.swift in Sources */,
 				784FAA8C26366B7100BC5636 /* BinaryTreeTest.swift in Sources */,
 				78CECBCF26281D5500BEB594 /* CircleDeque.swift in Sources */,
 				78A218232686D62D00FEF33D /* SelectedSorted.swift in Sources */,
@@ -476,14 +516,18 @@
 				78A2182B26871C1800FEF33D /* ShellSort.swift in Sources */,
 				783EF6912689EB1D00192F9F /* CountingSorted.swift in Sources */,
 				783089B726218F88002CDD2E /* CircleDoubleLinkList.swift in Sources */,
+				7877371D26A919CD00960668 /* UnionFindNode.swift in Sources */,
 				78FB6D68266DC76B008134F9 /* BubbleSorted.swift in Sources */,
 				78CECBCC26281D4700BEB594 /* CircleQueue.swift in Sources */,
 				78A218272686EA6000FEF33D /* MergeSort.swift in Sources */,
+				7877371926A83E1A00960668 /* HashSet.swift in Sources */,
 				780C30F4266219D800E36067 /* AbstractHeap.swift in Sources */,
+				7877372226A94B1500960668 /* WeightManager.swift in Sources */,
 				783089CD2622D832002CDD2E /* Statck.swift in Sources */,
 				787D2FBA261DF8BF0033364A /* main.swift in Sources */,
 				783C3CA9264A71710029EBD7 /* Set.swift in Sources */,
 				78904842261EDB840092F866 /* DoubleLinkList.swift in Sources */,
+				7877372626A94CD200960668 /* EdgeInfo.swift in Sources */,
 				78CECBC22627F0D600BEB594 /* SingleDeque.swift in Sources */,
 				78EA02E5269E81D1002B7037 /* RadixSorted.swift in Sources */,
 				7840817D264FA5E900774D2D /* HashMap.swift in Sources */,
@@ -500,9 +544,13 @@
 				7855AC5B262D313700FF5A51 /* BinaryTreeInfo.swift in Sources */,
 				78D53AAC26A57CFD001715E1 /* UnionFind_QF.swift in Sources */,
 				78A0A3E2264B864D00063029 /* TreeMap.swift in Sources */,
+				7877372A26A9551D00960668 /* Vertex.swift in Sources */,
+				7877372426A94C0000960668 /* PathInfo.swift in Sources */,
 				787D2FC3261DF91C0033364A /* SingleLinkList.swift in Sources */,
 				780C30F7266378B400E36067 /* PriorityQueue.swift in Sources */,
+				7877372826A9532900960668 /* ListGraph.swift in Sources */,
 				78A0A3E4264B89CE00063029 /* MapNode.swift in Sources */,
+				7877372C26A9556D00960668 /* Edge.swift in Sources */,
 				7840817F264FABD800774D2D /* HashNode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -7,7 +7,7 @@
 
 import Cocoa
 
-class Set<E: Comparable> {
+class Set<E: Comparable & Hashable> {
 
     /// 元素个数
     func size() -> Int {
@@ -31,6 +31,7 @@ class Set<E: Comparable> {
     func add(val: E) {}
     
     /// 删除元素
+    @discardableResult
     func remove(val: E) -> E? {
         return nil
     }

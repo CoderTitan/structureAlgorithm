@@ -7,11 +7,21 @@
 
 import Cocoa
 
+
+typealias Visitor = ((Hashable, Comparable) -> ())
+
 /// GNU Step
-class HashMap<K: NSObject, V: Comparable> {
+class HashMap<K: Hashable, V: Comparable> {
     
+    
+    fileprivate let capacity = 1 << 4
+    fileprivate let loadFactor = 0.75
     fileprivate var size = 0
     fileprivate var tables = [HashNode<K, V>?]()
+    
+    init() {
+        tables = Array(repeating: nil, count: capacity)
+    }
     
     /// 元素个数
     func count() -> Int {
@@ -33,6 +43,8 @@ class HashMap<K: NSObject, V: Comparable> {
     /// 添加元素
     @discardableResult
     func put(key: K?, val: V?) -> V? {
+        resertSize()
+        
         // 获取key对应的索引
         let index = index(key)
         // 找到index位置的红黑树节点
@@ -65,20 +77,43 @@ class HashMap<K: NSObject, V: Comparable> {
             let h2 = node?.hash ?? 0
             
             if h2 > h1 {
-                node = node?.left
                 compare = 1
             } else if h2 < h1 {
-                node = node?.right
                 compare = -1
-            } else if k1?.isEqual(k2) == true {
+            } else if k1 == k2 {
                 compare = 0
+            } else if let kk1 = k1, let kk2 = k2 {
+                compare = kk1.hashValue - kk2.hashValue
             } else if searched {
                 //比较内存地址
-                let hash1 = k1?.hash ?? 0
-                let hash2 = k2?.hash ?? 0
+                let hash1 = k1?.hashValue ?? 0
+                let hash2 = k2?.hashValue ?? 0
                 compare = hash1 - hash2
             } else {
-                
+                if node?.left != nil && getNode(node?.left, k1: k1) != nil {
+                    node = getNode(node?.left, k1: k1)
+                    compare = 0
+                } else if node?.right != nil && getNode(node?.right, k1: k1) != nil {
+                    node = getNode(node?.right, k1: k1)
+                    compare = 0
+                } else {
+                    searched = true
+                    let hash1 = k1?.hashValue ?? 0
+                    let hash2 = k2?.hashValue ?? 0
+                    compare = hash1 - hash2
+                }
+            }
+            
+            if compare > 0 {
+                node = node?.right
+            } else if compare < 0 {
+                node = node?.left
+            } else {
+                let oldVal = node?.val
+                node?.key = key
+                node?.val = val
+                node?.hash = h1
+                return oldVal
             }
         }
         
@@ -97,37 +132,81 @@ class HashMap<K: NSObject, V: Comparable> {
     
     /// 根据元素查询value
     func get(key: K) -> V? {
-        
-        return nil
+        let node = node(key)
+        return node?.val
     }
     
     /// 删除元素
     func remove(key: K) -> V? {
-        return nil
+        return removeNode(node(key))
     }
     
     /// 是否包含Key
     func containsKey(key: K) -> Bool {
-        return false
+        return node(key) != nil
     }
     
     /// 是否包含Value
     func containsValue(val: V) -> Bool {
+        if size == 0 { return false }
+        let queue = SingleQueue<HashNode<K, V>>()
+        for i in 0..<tables.count {
+            if tables[i] == nil { continue }
+            
+            queue.enQueue(tables[i])
+            while !queue.isEmpty() {
+                let node = queue.deQueue()
+                if node?.val == val {
+                    return true
+                }
+                if let left = node?.left {
+                    queue.enQueue(left)
+                }
+                if let right = node?.right {
+                    queue.enQueue(right)
+                }
+            }
+        }
         return false
+    }
+    
+    /// 遍历
+    func traversal(visitor: ((K?, V?) -> ())) {
+        if size == 0 { return }
+        
+        let queue = SingleQueue<HashNode<K, V>>()
+        for i in 0..<tables.count {
+            if tables[i] == nil { continue }
+            
+            queue.enQueue(tables[i])
+            while !queue.isEmpty() {
+                if let node = queue.deQueue() {
+                    visitor(node.key, node.val)
+                    
+                    if let left = node.left {
+                        queue.enQueue(left)
+                    }
+                    if let right = node.right {
+                        queue.enQueue(right)
+                    }
+                }
+            }
+        }
     }
 }
 
 
 extension HashMap {
     /// 根据key哈希值计算索引
-    func index(_ key: K?) -> Int {
+    fileprivate func index(_ key: K?) -> Int {
         let hash = hash(key)
         return hash & (tables.count - 1)
     }
     
     /// 根据node哈希值计算索引
-    func index(_ node: HashNode<K, V>) -> Int {
-        return node.hash & (tables.count - 1)
+    fileprivate func index(_ node: HashNode<K, V>?) -> Int {
+        let hash = node?.hash ?? 0
+        return hash & (tables.count - 1)
     }
     
     /// 计算哈希值
@@ -158,8 +237,6 @@ extension HashMap {
     fileprivate func getNode(_ root: HashNode<K, V>?, k1: K?) -> HashNode<K, V>? {
         var node = root
         let h1 = hash(k1)
-        let result: HashNode<K, V>?
-        let com = 0
         
         while node != nil {
             let k2 = node?.key
@@ -169,26 +246,278 @@ extension HashMap {
                 node = node?.right
             } else if h1 < h2 {
                 node = node?.left
-            } else if k1?.isEqual(k2) == true {
+            } else if k1 == k2 {
                 return node
-            } 
+            } else if let kk1 = k1, let kk2 = k2 {
+                node = kk1.hashValue > kk2.hashValue ? node?.right : node?.left
+            } else if node?.right != nil && getNode(node?.right, k1: k1) != nil {
+                return node?.right
+            } else {
+                node = node?.left
+            }
         }
         
-        
         return nil
+    }
+    
+    /// 删除对应的node
+    fileprivate func removeNode(_ node: HashNode<K, V>?) -> V? {
+        if node == nil { return nil }
+        
+        var curNode = node
+        size -= 1
+        
+        let oldVal = curNode?.val
+        if curNode?.twoChildren() == true {
+            // 度为2的节点, 找后继节点
+            let s = successor(curNode)
+            node?.key = s?.key
+            node?.val = s?.val
+            node?.hash = s?.hash ?? 0
+            curNode = s
+        }
+        
+        // 删除node节点, 节点的度必然是0或者1
+        let replacement = curNode?.left != nil ? curNode?.left : curNode?.right
+        let index = index(curNode)
+        
+        if replacement != nil {
+            replacement?.parent = curNode?.parent
+            if curNode?.parent == nil {
+                tables[index] = replacement
+            } else if curNode == curNode?.parent?.left {
+                curNode?.parent?.left = replacement
+            } else {
+                node?.parent?.right = replacement
+            }
+            
+            // 删除之后
+            fixAfterRemove(replacement)
+        } else if curNode?.parent == nil {
+            // 是椰子节点病切是根节点
+            tables[index] = nil
+        } else {
+            // 是椰子节点
+            if curNode == curNode?.parent?.left {
+                curNode?.parent?.left = nil
+            } else {
+                curNode?.parent?.right = nil
+            }
+            
+            fixAfterRemove(curNode)
+        }
+        
+        return oldVal
+    }
+    
+    /// 重置数组容量
+    fileprivate func resertSize() {
+        // 装填因子 <= 0.75
+        if size / tables.count <= capacity { return }
+        
+        let oldTable = tables
+        tables = Array(repeating: nil, count: oldTable.count << 1)
+        let queue = SingleQueue<HashNode<K, V>>()
+        
+        for i in 0..<tables.count {
+            if oldTable[i] == nil { continue }
+            
+            queue.enQueue(oldTable[i])
+            while !queue.isEmpty() {
+                let node = queue.deQueue()
+                if let left = node?.left {
+                    queue.enQueue(left)
+                }
+                if let right = node?.right {
+                    queue.enQueue(right)
+                }
+                
+             moveNode(node)
+            }
+        }
+    }
+    
+    /// 挪动代码得放到最后面
+    fileprivate func moveNode(_ newNode: HashNode<K, V>?) {
+        newNode?.parent = nil
+        newNode?.left = nil
+        newNode?.right = nil
+        newNode?.isRed = true
+        
+        let index = index(newNode)
+        var root = tables[index]
+        if root == nil {
+            root = newNode
+            tables[index] = root
+            fixAfterPut(root)
+            return
+        }
+        
+        // 添加新的节点到红黑树
+        var parent = root
+        var node = root
+        var cmp = 0
+        let h1 = newNode?.hash ?? 0
+        while node != nil {
+            parent = node
+            let h2 = node?.hash ?? 0
+            cmp = h1 - h2
+            if cmp > 0 {
+                node = node?.right
+            } else if cmp < 0 {
+                node = node?.left
+            }
+        }
+        
+        newNode?.parent = parent
+        if cmp > 0 {
+            parent?.right = newNode
+        } else {
+            parent?.left = newNode
+        }
+        
+        fixAfterPut(newNode)
     }
 }
 
 
 extension HashMap {
-    /// 添加之后平衡红黑树
-    fileprivate func fixAfterPut(_ node: HashNode<K, V>) {
+    /// 后继节点
+    fileprivate func successor(_ node: HashNode<K, V>?) -> HashNode<K, V>? {
+        if node == nil { return nil }
         
+        var p = node?.right
+        if p != nil {
+            while p?.left != nil {
+                p = p?.left
+            }
+            return p
+        }
+        
+        var curNode = node
+        while curNode?.parent != nil && curNode == curNode?.parent?.right {
+            curNode = curNode?.parent
+        }
+        return curNode?.parent
+    }
+    
+    /// 添加之后平衡红黑树
+    fileprivate func fixAfterPut(_ node: HashNode<K, V>?) {
+        let parent = node?.parent
+        
+        // 添加的是根节点, 或者上益到达了根节点
+        if parent == nil {
+            node?.isRed = false
+            return
+        }
+        
+        // 父节点是黑色
+        if parent?.isRed == false {
+            return
+        }
+        
+        // 叔父节点
+        let uncle = parent?.sibling()
+        // 祖父节点
+        let grand = parent?.parent
+        grand?.isRed = true
+        
+        if uncle?.isRed == true {
+            parent?.isRed = false
+            uncle?.isRed = false
+            fixAfterPut(grand)
+            return
+        }
+        
+        // 叔父节点不是红色
+        if parent?.isLeftChild() == true {
+            if node?.isLeftChild() == true {
+                parent?.isRed = false
+            } else {
+                node?.isRed = false
+                if let p = parent {
+                    rotateLeft(p)
+                }
+            }
+            if let p = grand {
+                rotateRight(p)
+            }
+        } else {
+            if node?.isLeftChild() == true {
+                node?.isRed = false
+                if let p = parent {
+                    rotateRight(p)
+                }
+            } else {
+                parent?.isRed = false
+            }
+            if let p = grand {
+                rotateRight(p)
+            }
+        }
     }
     
     /// 删除之后平衡红黑树
-    fileprivate func fixAfterRemove(_ node: HashNode<K, V>) {
+    fileprivate func fixAfterRemove(_ node: HashNode<K, V>?) {
+        if node?.isRed == true {
+            node?.isRed = false
+            return
+        }
         
+        guard let parent = node?.parent else { return }
+        let isLeft = parent.left == nil || node?.isLeftChild() ?? false
+        var sibling = isLeft ? parent.right : parent.left
+        
+        if isLeft {
+            if sibling?.isRed == true {
+                sibling?.isRed = false
+                parent.isRed = true
+                rotateLeft(parent)
+                sibling = parent.right
+            }
+            if sibling?.left?.isRed == false && sibling?.right?.isRed == false {
+                let pRed = parent.isRed
+                parent.isRed = false
+                sibling?.isRed = true
+                if pRed == false {
+                    fixAfterRemove(parent)
+                }
+            } else {
+                if sibling?.right?.isRed == false, let s = sibling {
+                    rotateRight(s)
+                    sibling = parent.right
+                }
+                sibling?.isRed = parent.isRed
+                sibling?.right?.isRed = false
+                parent.isRed = false
+                rotateLeft(parent)
+            }
+        } else {
+            if sibling?.isRed == true {
+                sibling?.isRed = false
+                parent.isRed = true
+                rotateLeft(parent)
+                sibling = parent.left
+            }
+            
+            if sibling?.left?.isRed == false && sibling?.right?.isRed == false {
+                let pRed = parent.isRed
+                parent.isRed = false
+                sibling?.isRed = true
+                if pRed == false {
+                    fixAfterRemove(parent)
+                }
+            } else {
+                if sibling?.left?.isRed == false, let s = sibling {
+                    rotateLeft(s)
+                    sibling = parent.left
+                }
+                sibling?.isRed = parent.isRed
+                sibling?.left?.isRed = false
+                parent.isRed = false
+                rotateRight(parent)
+            }
+        }
     }
     
     /// 左旋转
