@@ -40,6 +40,28 @@ class HashMap<K: Hashable, V: Comparable> {
         tables.removeAll()
     }
     
+    /// 所有key
+    func keys() -> [K] {
+        var array = [K]()
+        traversal { key, val in
+            if let k = key {
+                array.append(k)
+            }
+        }
+        return array
+    }
+    
+    /// 所有value
+    func values() -> [V] {
+        var array = [V]()
+        traversal { key, val in
+            if let v = val {
+                array.append(v)
+            }
+        }
+        return array
+    }
+    
     /// 添加元素
     @discardableResult
     func put(key: K?, val: V?) -> V? {
@@ -137,6 +159,7 @@ class HashMap<K: Hashable, V: Comparable> {
     }
     
     /// 删除元素
+    @discardableResult
     func remove(key: K) -> V? {
         return removeNode(node(key))
     }
@@ -195,6 +218,16 @@ class HashMap<K: Hashable, V: Comparable> {
     }
 }
 
+
+extension HashMap: Comparable {
+    static func < (lhs: HashMap<K, V>, rhs: HashMap<K, V>) -> Bool {
+        return lhs.count() < rhs.count()
+    }
+    
+    static func == (lhs: HashMap<K, V>, rhs: HashMap<K, V>) -> Bool {
+        return lhs.count() == rhs.count()
+    }
+}
 
 extension HashMap {
     /// 根据key哈希值计算索引

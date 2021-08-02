@@ -39,7 +39,6 @@
 		7877371B26A8420E00960668 /* GenericUnionFind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7877371A26A8420E00960668 /* GenericUnionFind.swift */; };
 		7877371D26A919CD00960668 /* UnionFindNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7877371C26A919CD00960668 /* UnionFindNode.swift */; };
 		7877372026A94AD700960668 /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7877371F26A94AD700960668 /* Graph.swift */; };
-		7877372226A94B1500960668 /* WeightManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7877372126A94B1500960668 /* WeightManager.swift */; };
 		7877372426A94C0000960668 /* PathInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7877372326A94C0000960668 /* PathInfo.swift */; };
 		7877372626A94CD200960668 /* EdgeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7877372526A94CD200960668 /* EdgeInfo.swift */; };
 		7877372826A9532900960668 /* ListGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7877372726A9532900960668 /* ListGraph.swift */; };
@@ -47,6 +46,10 @@
 		7877372C26A9556D00960668 /* Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7877372B26A9556D00960668 /* Edge.swift */; };
 		787D2FBA261DF8BF0033364A /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787D2FB9261DF8BF0033364A /* main.swift */; };
 		787D2FC3261DF91C0033364A /* SingleLinkList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787D2FC2261DF91C0033364A /* SingleLinkList.swift */; };
+		78843FFF26B289DA00422385 /* GraphTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78843FFE26B289DA00422385 /* GraphTest.swift */; };
+		7884400126B28ABF00422385 /* GraphData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7884400026B28ABF00422385 /* GraphData.swift */; };
+		7884400326B3A1B300422385 /* MinHeap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7884400226B3A1B300422385 /* MinHeap.swift */; };
+		7884400526B3A1D800422385 /* MaxHeap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7884400426B3A1D800422385 /* MaxHeap.swift */; };
 		78904842261EDB840092F866 /* DoubleLinkList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78904841261EDB840092F866 /* DoubleLinkList.swift */; };
 		78A0A3E2264B864D00063029 /* TreeMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A0A3E1264B864D00063029 /* TreeMap.swift */; };
 		78A0A3E4264B89CE00063029 /* MapNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A0A3E3264B89CE00063029 /* MapNode.swift */; };
@@ -121,7 +124,6 @@
 		7877371A26A8420E00960668 /* GenericUnionFind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericUnionFind.swift; sourceTree = "<group>"; };
 		7877371C26A919CD00960668 /* UnionFindNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnionFindNode.swift; sourceTree = "<group>"; };
 		7877371F26A94AD700960668 /* Graph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graph.swift; sourceTree = "<group>"; };
-		7877372126A94B1500960668 /* WeightManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightManager.swift; sourceTree = "<group>"; };
 		7877372326A94C0000960668 /* PathInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathInfo.swift; sourceTree = "<group>"; };
 		7877372526A94CD200960668 /* EdgeInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeInfo.swift; sourceTree = "<group>"; };
 		7877372726A9532900960668 /* ListGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListGraph.swift; sourceTree = "<group>"; };
@@ -130,6 +132,10 @@
 		787D2FB6261DF8BF0033364A /* StructAndArithmetic */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = StructAndArithmetic; sourceTree = BUILT_PRODUCTS_DIR; };
 		787D2FB9261DF8BF0033364A /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		787D2FC2261DF91C0033364A /* SingleLinkList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleLinkList.swift; sourceTree = "<group>"; };
+		78843FFE26B289DA00422385 /* GraphTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphTest.swift; sourceTree = "<group>"; };
+		7884400026B28ABF00422385 /* GraphData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphData.swift; sourceTree = "<group>"; };
+		7884400226B3A1B300422385 /* MinHeap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinHeap.swift; sourceTree = "<group>"; };
+		7884400426B3A1D800422385 /* MaxHeap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaxHeap.swift; sourceTree = "<group>"; };
 		78904841261EDB840092F866 /* DoubleLinkList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleLinkList.swift; sourceTree = "<group>"; };
 		78A0A3E1264B864D00063029 /* TreeMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeMap.swift; sourceTree = "<group>"; };
 		78A0A3E3264B89CE00063029 /* MapNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapNode.swift; sourceTree = "<group>"; };
@@ -183,6 +189,8 @@
 			children = (
 				780C30F3266219D800E36067 /* AbstractHeap.swift */,
 				780C30F12662199E00E36067 /* BinaryHeap.swift */,
+				7884400226B3A1B300422385 /* MinHeap.swift */,
+				7884400426B3A1D800422385 /* MaxHeap.swift */,
 			);
 			path = "10-堆";
 			sourceTree = "<group>";
@@ -286,7 +294,8 @@
 			children = (
 				7877371F26A94AD700960668 /* Graph.swift */,
 				7877372726A9532900960668 /* ListGraph.swift */,
-				7877372126A94B1500960668 /* WeightManager.swift */,
+				78843FFE26B289DA00422385 /* GraphTest.swift */,
+				7884400026B28ABF00422385 /* GraphData.swift */,
 				7877372326A94C0000960668 /* PathInfo.swift */,
 				7877372526A94CD200960668 /* EdgeInfo.swift */,
 				7877372926A9551D00960668 /* Vertex.swift */,
@@ -489,6 +498,7 @@
 				78BE8898261E87EB006D645A /* List.swift in Sources */,
 				784027E92626D51E00C8A88A /* LinkeExercises.swift in Sources */,
 				78D53AAA26A572B0001715E1 /* UnionFind.swift in Sources */,
+				7884400126B28ABF00422385 /* GraphData.swift in Sources */,
 				78A62E82262E8088000D229B /* BinaryTreesPrint.swift in Sources */,
 				781C0366263A85CF0045290F /* TreeNode.swift in Sources */,
 				78A218292686FFA400FEF33D /* QuickSorted.swift in Sources */,
@@ -522,7 +532,6 @@
 				78A218272686EA6000FEF33D /* MergeSort.swift in Sources */,
 				7877371926A83E1A00960668 /* HashSet.swift in Sources */,
 				780C30F4266219D800E36067 /* AbstractHeap.swift in Sources */,
-				7877372226A94B1500960668 /* WeightManager.swift in Sources */,
 				783089CD2622D832002CDD2E /* Statck.swift in Sources */,
 				787D2FBA261DF8BF0033364A /* main.swift in Sources */,
 				783C3CA9264A71710029EBD7 /* Set.swift in Sources */,
@@ -532,6 +541,7 @@
 				78EA02E5269E81D1002B7037 /* RadixSorted.swift in Sources */,
 				7840817D264FA5E900774D2D /* HashMap.swift in Sources */,
 				780AB08A2645430000C7D6CF /* BinaryTree.swift in Sources */,
+				7884400326B3A1B300422385 /* MinHeap.swift in Sources */,
 				7855AC64262D7A2F00FF5A51 /* Extension.swift in Sources */,
 				783C3CAD264A740D0029EBD7 /* ListSet.swift in Sources */,
 				780C30F22662199E00E36067 /* BinaryHeap.swift in Sources */,
@@ -542,6 +552,7 @@
 				786C838D266DFE02005CF61D /* HeapSorted.swift in Sources */,
 				78D53AB426A66EE8001715E1 /* UnionFind_QU_Rank_PC.swift in Sources */,
 				7855AC5B262D313700FF5A51 /* BinaryTreeInfo.swift in Sources */,
+				7884400526B3A1D800422385 /* MaxHeap.swift in Sources */,
 				78D53AAC26A57CFD001715E1 /* UnionFind_QF.swift in Sources */,
 				78A0A3E2264B864D00063029 /* TreeMap.swift in Sources */,
 				7877372A26A9551D00960668 /* Vertex.swift in Sources */,
@@ -549,6 +560,7 @@
 				787D2FC3261DF91C0033364A /* SingleLinkList.swift in Sources */,
 				780C30F7266378B400E36067 /* PriorityQueue.swift in Sources */,
 				7877372826A9532900960668 /* ListGraph.swift in Sources */,
+				78843FFF26B289DA00422385 /* GraphTest.swift in Sources */,
 				78A0A3E4264B89CE00063029 /* MapNode.swift in Sources */,
 				7877372C26A9556D00960668 /* Edge.swift in Sources */,
 				7840817F264FABD800774D2D /* HashNode.swift in Sources */,

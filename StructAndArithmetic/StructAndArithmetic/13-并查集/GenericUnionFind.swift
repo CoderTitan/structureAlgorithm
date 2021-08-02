@@ -7,6 +7,7 @@
 
 import Cocoa
 
+/// 泛型并查集
 class GenericUnionFind<V: Hashable & Comparable> {
 
     fileprivate let nodes = HashMap<V, UnionFindNode<V>>()

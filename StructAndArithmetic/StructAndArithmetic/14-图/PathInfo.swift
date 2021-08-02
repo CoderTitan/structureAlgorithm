@@ -8,36 +8,37 @@
 import Cocoa
 
 
-/// 顶点信息
-struct PathInfo<V: Comparable, E: Comparable> {
+/// 路径信息
+class PathInfo<V: Comparable, E: Comparable> {
     
     /// 权重
-    var weight: E? {
-        set {
-            self.weight = newValue
-        }
-        get {
-            return self.weight
-        }
-    }
+    var weight: Double = 0
     
-    /// 所有的边
-    var edgeInfos: SingleLinkList<EdgeInfo<V, E>>? {
-        set {
-            self.edgeInfos = newValue
-        }
-        get {
-            self.edgeInfos
-        }
-    }
+    /// 路径上所有的边, 存储的有顺序的边
+    var edgeInfos = [EdgeInfo<V, E>]()
     
-    init(weight: E) {
-        self.weight = weight
-    }
     
     func toString() -> String {
         let weight = String(describing: weight)
-        let edgeInfos = String(describing: edgeInfos)
-        return "PathInfo [weight=\(weight), edgeInfos = \(edgeInfos)]"
+        var infoString = "PathInfo = [ weight=\(weight), edgeInfos = [\n"
+        for edge in edgeInfos.reversed() {
+            infoString += edge.toString() + "\n"
+        }
+        infoString += "]]"
+        return infoString
+    }
+}
+
+extension PathInfo: Comparable {
+    static func < (lhs: PathInfo<V, E>, rhs: PathInfo<V, E>) -> Bool {
+        return lhs.weight < rhs.weight
+    }
+    
+    static func > (lhs: PathInfo<V, E>, rhs: PathInfo<V, E>) -> Bool {
+        return lhs.weight > rhs.weight
+    }
+    
+    static func == (lhs: PathInfo<V, E>, rhs: PathInfo<V, E>) -> Bool {
+        return lhs.weight == rhs.weight
     }
 }

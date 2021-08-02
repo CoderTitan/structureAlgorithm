@@ -44,6 +44,13 @@ class BinaryHeap<E: Comparable>: AbstractHeap<E> {
         shiftUp(valueArray.count - 1)
     }
     
+    /// 添加元素数组
+    override func addAll(vals: [E]) {
+        for val in vals {
+            add(val: val)
+        }
+    }
+    
     /// 获得堆顶元素
     override func top() -> E? {
         return valueArray.first

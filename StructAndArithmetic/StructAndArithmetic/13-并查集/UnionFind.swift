@@ -7,6 +7,11 @@
 
 import Cocoa
 
+/*
+ * 并查集
+ * 只接受Int
+ * 支持泛型的并查集使用: GenericUnionFind
+ */
 class UnionFind {
 
     /// 当前集

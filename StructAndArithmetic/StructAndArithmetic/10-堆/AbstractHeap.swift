@@ -36,6 +36,9 @@ class AbstractHeap<E: Comparable> {
     /// 添加元素
     func add(val: E) { }
     
+    /// 添加元素数组
+    func addAll(vals: [E]) { }
+    
     /// 获得堆顶元素
     func top() -> E? {
         return nil

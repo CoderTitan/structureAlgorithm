@@ -31,6 +31,30 @@ struct Vertex<V: Comparable & Hashable, E: Comparable> {
         }
         return "nil"
     }
+    
+    func inEdgesString() -> String {
+        if inEdges.lists().isEmpty {
+            return "[]"
+        }
+        var string = ""
+        inEdges.lists().forEach { edge in
+            string += edge.toString()
+            string += "\n"
+        }
+        return string
+    }
+    
+    func outEdgesString() -> String {
+        if outEdges.lists().isEmpty {
+            return "[]"
+        }
+        var string = ""
+        outEdges.lists().forEach { edge in
+            string += edge.toString()
+            string += "\n"
+        }
+        return string
+    }
 }
 
 extension Vertex: Hashable & Comparable {
@@ -43,6 +67,7 @@ extension Vertex: Hashable & Comparable {
     }
     
     func hash(into hasher: inout Hasher) {
-        hasher.combine(self)
+        let text = String(describing: value)
+        hasher.combine(text)
     }
 }

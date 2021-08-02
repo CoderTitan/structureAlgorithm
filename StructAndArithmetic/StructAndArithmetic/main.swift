@@ -7,29 +7,14 @@
 
 import Foundation
 
+//GraphTest<Int>.bfsTest(0, data: GraphData.BFS_02)
+//
+//GraphTest<String>.dfsTest("a", data: GraphData.DFS_02)
+//GraphTest<String>.dfsCycleTest("a", data: GraphData.DFS_02)
+//
+//GraphTest<Int>.topSortTest(GraphData.TOPO)
 
-let str: NSObject = "s12" as NSObject
+//GraphTest<Double>.mstPrim(GraphData.MST_01)
+//GraphTest<Int>.mstKruskal(GraphData.MST_01)
 
-
-struct Person: Hashable {
-    static func == (lhs: Person, rhs: Person) -> Bool {
-        return true
-    }
-    
-    
-}
-
-
-
-struct ListAction: Hashable {
-    static func == (lhs: ListAction, rhs: ListAction) -> Bool {
-        return lhs.label == rhs.label
-    }
-
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(label)
-    }
-
-    let label: String
-    let action: (() -> Void)? = nil
-}
+GraphTest<String>.floydShortPath()
