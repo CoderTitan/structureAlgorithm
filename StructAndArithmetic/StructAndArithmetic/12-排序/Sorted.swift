@@ -20,14 +20,15 @@ class Sorted<T: Comparable> {
     
     
     /// 比较数组
-    final func sorted(by array: [T]) {
-        if array.count < 2 { return }
+    final func sorted(by array: [T]) -> [T] {
+        if array.count < 2 { return array }
         dataArray = array
         
         let begin = Date().timeIntervalSince1970
         sortAction()
         let end = Date().timeIntervalSince1970
         time = end - begin
+        return dataArray
     }
     
     /// 需要呗子类继承

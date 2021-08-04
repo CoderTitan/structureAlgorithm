@@ -7,6 +7,7 @@
 
 import Cocoa
 
+/// 二叉平衡树
 class BinaryBalanceTree: BinaryTree {
     
     /// 左旋转

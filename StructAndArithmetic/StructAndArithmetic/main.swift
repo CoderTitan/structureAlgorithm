@@ -17,4 +17,3 @@ import Foundation
 //GraphTest<Double>.mstPrim(GraphData.MST_01)
 //GraphTest<Int>.mstKruskal(GraphData.MST_01)
 
-GraphTest<String>.floydShortPath()

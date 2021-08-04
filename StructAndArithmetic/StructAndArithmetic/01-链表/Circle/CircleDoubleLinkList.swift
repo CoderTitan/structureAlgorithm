@@ -1,17 +1,18 @@
 //
-//  DoubleLinkList.swift
+//  CircleDoubleLinkList.swift
 //  StructAndArithmetic
 //
-//  Created by zl on 2021/4/8.
+//  Created by zl on 2021/4/10.
 //
 
 import Cocoa
 
-class DoubleLinkList<E: Comparable>: AbstractList<E> {
+/// 双向循环链表
+class CircleDoubleLinkList<E: Comparable>: AbstractList<E> {
 
     fileprivate var first: ListNode<E>?
     fileprivate var last: ListNode<E>?
-    
+    fileprivate var current: ListNode<E>?
     
     /**
      * 清除所有元素
@@ -49,27 +50,10 @@ class DoubleLinkList<E: Comparable>: AbstractList<E> {
             return nil
         }
         
-        let current = getNode(index)
-        let oldElement = current?.element
-        current?.element = element
+        let currentNode = getNode(index)
+        let oldElement = currentNode?.element
+        currentNode?.element = element
         return oldElement
-    }
-    
-    /**
-     * 是否包含某个元素
-     * @param element
-     * @return
-     */
-    override func contains(_ element: E) -> Bool {
-        return indexOf(element) != -1
-    }
-
-    /**
-     * 添加元素到尾部
-     * @param element
-     */
-    override func add(_ element: E) {
-        add(by: count, element: element)
     }
     
     /**
@@ -84,22 +68,24 @@ class DoubleLinkList<E: Comparable>: AbstractList<E> {
         
         if index == count {
             let oldLast = last
-            last = ListNode(element: element, next: nil, prev: oldLast)
+            last = ListNode(element: element, next: first, prev: oldLast)
             if oldLast == nil {
                 first = last
+                first?.next = last
+                last?.prev = first
             } else {
                 oldLast?.next = last
+                first?.prev = last
             }
         } else {
-            let current = getNode(index)
-            let befer = current?.prev
-            let node = ListNode(element: element, next: current, prev: befer)
+            let currentNode = getNode(index)
+            let befer = currentNode?.prev
+            let node = ListNode(element: element, next: currentNode, prev: befer)
             
-            current?.prev = node
-            if befer == nil {
+            currentNode?.prev = node
+            befer?.next = currentNode
+            if currentNode == first {
                 first = node
-            } else {
-                befer?.next = node
             }
         }
         count += 1
@@ -115,23 +101,26 @@ class DoubleLinkList<E: Comparable>: AbstractList<E> {
             return nil
         }
         
-        let current = getNode(index)
-        let befer = current?.prev
-        let after = current?.next
-        
-        if befer == nil {
-            first = after
+        let currentNode = getNode(index)
+        if count == 1 {
+            first = nil
+            last = nil
         } else {
+            let befer = currentNode?.prev
+            let after = currentNode?.next
+            
             befer?.next = after
+            after?.prev = befer
+            if currentNode == first {
+                first = after
+            }
+            if currentNode == last {
+                last = befer
+            }
         }
         
-        if after == nil {
-            last = befer
-        } else {
-            after?.prev = befer
-        }
         count -= 1
-        return current?.element
+        return currentNode?.element
     }
     
     /**
@@ -174,7 +163,7 @@ class DoubleLinkList<E: Comparable>: AbstractList<E> {
     }
 }
 
-extension DoubleLinkList {
+extension CircleDoubleLinkList {
     /// 获取index位置对应的节点对象
     fileprivate func getNode(_ index: Int) -> ListNode<E>? {
         if rangeCheck(index) {
@@ -198,4 +187,3 @@ extension DoubleLinkList {
         return node
     }
 }
-

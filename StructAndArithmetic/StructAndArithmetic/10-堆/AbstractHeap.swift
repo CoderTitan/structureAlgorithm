@@ -19,7 +19,6 @@ class AbstractHeap<E: Comparable> {
     }
     
     
-    
     /// 元素的数量
     func count() -> Int {
         return 0

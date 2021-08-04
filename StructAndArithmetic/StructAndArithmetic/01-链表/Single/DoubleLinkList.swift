@@ -1,22 +1,32 @@
 //
-//  CircleSingleLineList.swift
+//  DoubleLinkList.swift
 //  StructAndArithmetic
 //
-//  Created by zl on 2021/4/10.
+//  Created by zl on 2021/4/8.
 //
 
 import Cocoa
 
-class CircleSingleLineList<E: Comparable>: AbstractList<E> {
-    
+/// 双向链表
+class DoubleLinkList<E: Comparable>: AbstractList<E> {
+
     fileprivate var first: ListNode<E>?
+    fileprivate var last: ListNode<E>?
+    
     
     /**
      * 清除所有元素
      */
     override func clear() {
-        count = 0
+        var node = first
+        for _ in 0..<count {
+            node = node?.next
+            node?.prev = nil
+        }
+        
         first = nil
+        last = nil
+        count = 0
     }
     
     /**
@@ -47,6 +57,23 @@ class CircleSingleLineList<E: Comparable>: AbstractList<E> {
     }
     
     /**
+     * 是否包含某个元素
+     * @param element
+     * @return
+     */
+    override func contains(_ element: E) -> Bool {
+        return indexOf(element) != -1
+    }
+
+    /**
+     * 添加元素到尾部
+     * @param element
+     */
+    override func add(_ element: E) {
+        add(by: count, element: element)
+    }
+    
+    /**
      * 在index位置插入一个元素
      * @param index
      * @param element
@@ -56,14 +83,25 @@ class CircleSingleLineList<E: Comparable>: AbstractList<E> {
             return
         }
         
-        if index == 0 {
-            let newFirst = ListNode(element: element, next: first)
-            let last = count == 0 ? first : getNode(count - 1)
-            last?.next = newFirst
-            first = newFirst
+        if index == count {
+            let oldLast = last
+            last = ListNode(element: element, next: nil, prev: oldLast)
+            if oldLast == nil {
+                first = last
+            } else {
+                oldLast?.next = last
+            }
         } else {
-            let befer = getNode(index - 1)
-            befer?.next = ListNode(element: element, next: befer?.next)
+            let current = getNode(index)
+            let befer = current?.prev
+            let node = ListNode(element: element, next: current, prev: befer)
+            
+            current?.prev = node
+            if befer == nil {
+                first = node
+            } else {
+                befer?.next = node
+            }
         }
         count += 1
     }
@@ -78,22 +116,23 @@ class CircleSingleLineList<E: Comparable>: AbstractList<E> {
             return nil
         }
         
-        var node = first
-        if index == 0 {
-            if count == 1 {
-                first = nil
-            } else {
-                let last = count == 0 ? first : getNode(index - 1)
-                first = node?.next
-                last?.next = first
-            }
+        let current = getNode(index)
+        let befer = current?.prev
+        let after = current?.next
+        
+        if befer == nil {
+            first = after
         } else {
-            let befer = getNode(index - 1)
-            node = befer?.next
-            befer?.next = befer?.next?.next
+            befer?.next = after
+        }
+        
+        if after == nil {
+            last = befer
+        } else {
+            after?.prev = befer
         }
         count -= 1
-        return node?.element
+        return current?.element
     }
     
     /**
@@ -136,17 +175,28 @@ class CircleSingleLineList<E: Comparable>: AbstractList<E> {
     }
 }
 
-extension CircleSingleLineList {
+extension DoubleLinkList {
     /// 获取index位置对应的节点对象
     fileprivate func getNode(_ index: Int) -> ListNode<E>? {
         if rangeCheck(index) {
             return nil
         }
+        
+        // 前半部分
+        if index < count >> 1 {
+            var node = first
+            for _ in 0..<index {
+                node = node?.next
+            }
+            return node
+        }
 
-        var node = first
-        for _ in 0..<index {
-            node = node?.next
+        // 后半部分
+        var node = last
+        for _ in (index+1..<count).reversed() {
+            node = node?.prev
         }
         return node
     }
 }
+

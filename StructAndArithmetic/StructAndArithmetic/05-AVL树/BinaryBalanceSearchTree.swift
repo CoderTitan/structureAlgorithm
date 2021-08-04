@@ -7,6 +7,7 @@
 
 import Cocoa
 
+/// 二叉平衡搜索树
 class BinaryBalanceSearchTree: BinaryBalanceTree {
     /// 添加node之后的调整节点
     override func afterAdd(_ node: TreeNode) {

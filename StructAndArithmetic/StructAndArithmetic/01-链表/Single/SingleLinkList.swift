@@ -7,6 +7,7 @@
 
 import Cocoa
 
+/// 单向链表
 class SingleLinkList<E: Comparable>: AbstractList<E> {
 
     fileprivate var first: ListNode<E>?

@@ -7,6 +7,7 @@
 
 import Cocoa
 
+/// 双端循环队列
 class CircleDeque<E: Comparable> {
 
     fileprivate var elements = [E?]()

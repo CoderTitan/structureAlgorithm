@@ -1,5 +1,5 @@
 //
-//  CircleDoubleLinkList.swift
+//  CircleSingleLineList.swift
 //  StructAndArithmetic
 //
 //  Created by zl on 2021/4/10.
@@ -7,25 +7,17 @@
 
 import Cocoa
 
-class CircleDoubleLinkList<E: Comparable>: AbstractList<E> {
-
+/// 单向循环链表
+class CircleSingleLineList<E: Comparable>: AbstractList<E> {
+    
     fileprivate var first: ListNode<E>?
-    fileprivate var last: ListNode<E>?
-    fileprivate var current: ListNode<E>?
     
     /**
      * 清除所有元素
      */
     override func clear() {
-        var node = first
-        for _ in 0..<count {
-            node = node?.next
-            node?.prev = nil
-        }
-        
-        first = nil
-        last = nil
         count = 0
+        first = nil
     }
     
     /**
@@ -49,9 +41,9 @@ class CircleDoubleLinkList<E: Comparable>: AbstractList<E> {
             return nil
         }
         
-        let currentNode = getNode(index)
-        let oldElement = currentNode?.element
-        currentNode?.element = element
+        let current = getNode(index)
+        let oldElement = current?.element
+        current?.element = element
         return oldElement
     }
     
@@ -65,27 +57,14 @@ class CircleDoubleLinkList<E: Comparable>: AbstractList<E> {
             return
         }
         
-        if index == count {
-            let oldLast = last
-            last = ListNode(element: element, next: first, prev: oldLast)
-            if oldLast == nil {
-                first = last
-                first?.next = last
-                last?.prev = first
-            } else {
-                oldLast?.next = last
-                first?.prev = last
-            }
+        if index == 0 {
+            let newFirst = ListNode(element: element, next: first)
+            let last = count == 0 ? first : getNode(count - 1)
+            last?.next = newFirst
+            first = newFirst
         } else {
-            let currentNode = getNode(index)
-            let befer = currentNode?.prev
-            let node = ListNode(element: element, next: currentNode, prev: befer)
-            
-            currentNode?.prev = node
-            befer?.next = currentNode
-            if currentNode == first {
-                first = node
-            }
+            let befer = getNode(index - 1)
+            befer?.next = ListNode(element: element, next: befer?.next)
         }
         count += 1
     }
@@ -100,26 +79,22 @@ class CircleDoubleLinkList<E: Comparable>: AbstractList<E> {
             return nil
         }
         
-        let currentNode = getNode(index)
-        if count == 1 {
-            first = nil
-            last = nil
+        var node = first
+        if index == 0 {
+            if count == 1 {
+                first = nil
+            } else {
+                let last = count == 0 ? first : getNode(index - 1)
+                first = node?.next
+                last?.next = first
+            }
         } else {
-            let befer = currentNode?.prev
-            let after = currentNode?.next
-            
-            befer?.next = after
-            after?.prev = befer
-            if currentNode == first {
-                first = after
-            }
-            if currentNode == last {
-                last = befer
-            }
+            let befer = getNode(index - 1)
+            node = befer?.next
+            befer?.next = befer?.next?.next
         }
-        
         count -= 1
-        return currentNode?.element
+        return node?.element
     }
     
     /**
@@ -162,26 +137,16 @@ class CircleDoubleLinkList<E: Comparable>: AbstractList<E> {
     }
 }
 
-extension CircleDoubleLinkList {
+extension CircleSingleLineList {
     /// 获取index位置对应的节点对象
     fileprivate func getNode(_ index: Int) -> ListNode<E>? {
         if rangeCheck(index) {
             return nil
         }
-        
-        // 前半部分
-        if index < count >> 1 {
-            var node = first
-            for _ in 0..<index {
-                node = node?.next
-            }
-            return node
-        }
 
-        // 后半部分
-        var node = last
-        for _ in (index+1..<count).reversed() {
-            node = node?.prev
+        var node = first
+        for _ in 0..<index {
+            node = node?.next
         }
         return node
     }

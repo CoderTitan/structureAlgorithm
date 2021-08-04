@@ -15,7 +15,7 @@ class Graph<V: Comparable & Hashable, E: Comparable & Hashable> {
         fatalError("edgesSize mast be init")
     }
     
-    /// 定点个数
+    /// 顶点个数
     func verticesSize() -> Int {
         fatalError("verticesSize mast be init")
     }
@@ -106,7 +106,6 @@ class Graph<V: Comparable & Hashable, E: Comparable & Hashable> {
     func floydShortPath() -> HashMap<V, HashMap<V, PathInfo<V, E>>>? {
         fatalError("bellmanFordShortPath")
     }
-    
     
     /// 输出字符串
     func printString() {}

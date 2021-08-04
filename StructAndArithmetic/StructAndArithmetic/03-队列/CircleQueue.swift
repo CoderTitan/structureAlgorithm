@@ -7,6 +7,7 @@
 
 import Cocoa
 
+/// 单端循环队列
 class CircleQueue<E: Comparable> {
 
     fileprivate var elements = [E?]()
