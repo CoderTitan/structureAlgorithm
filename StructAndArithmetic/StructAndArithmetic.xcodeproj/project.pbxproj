@@ -61,8 +61,14 @@
 		78A2182B26871C1800FEF33D /* ShellSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A2182A26871C1800FEF33D /* ShellSort.swift */; };
 		78A62E82262E8088000D229B /* BinaryTreesPrint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A62E81262E8088000D229B /* BinaryTreesPrint.swift */; };
 		78A7A625262D8E2C00C0695A /* InorderPrinter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A7A624262D8E2C00C0695A /* InorderPrinter.swift */; };
+		78A92A832733D70100E05291 /* Pirater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A92A822733D70100E05291 /* Pirater.swift */; };
+		78A92A852733DA4800E05291 /* CoinExchange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A92A842733DA4800E05291 /* CoinExchange.swift */; };
+		78A92A882733DF5300E05291 /* DivideConquer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A92A872733DF5300E05291 /* DivideConquer.swift */; };
 		78BE8898261E87EB006D645A /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BE8897261E87EB006D645A /* List.swift */; };
 		78BE889C261E8821006D645A /* AbstractList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BE889B261E8821006D645A /* AbstractList.swift */; };
+		78C65652272B9DE70058656D /* RecallSecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C65651272B9DE70058656D /* RecallSecord.swift */; };
+		78C65654272B9E060058656D /* RecallThird.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C65653272B9E060058656D /* RecallThird.swift */; };
+		78C65656272BD9A60058656D /* RecallLeetCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C65655272BD9A60058656D /* RecallLeetCode.swift */; };
 		78CECBBE2627E13A00BEB594 /* SingleQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CECBBD2627E13A00BEB594 /* SingleQueue.swift */; };
 		78CECBC22627F0D600BEB594 /* SingleDeque.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CECBC12627F0D600BEB594 /* SingleDeque.swift */; };
 		78CECBCC26281D4700BEB594 /* CircleQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CECBCB26281D4600BEB594 /* CircleQueue.swift */; };
@@ -76,7 +82,10 @@
 		78D53AB626A672CF001715E1 /* UnionFind_QU_Rank_PS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D53AB526A672CF001715E1 /* UnionFind_QU_Rank_PS.swift */; };
 		78D53AB826A67681001715E1 /* UnionFind_QU_Rank_PH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D53AB726A67681001715E1 /* UnionFind_QU_Rank_PH.swift */; };
 		78DDC4042667A37500803FC6 /* Sorted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DDC4032667A37500803FC6 /* Sorted.swift */; };
+		78DE71D1273674B700ED707F /* DynamicProgramming.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DE71D0273674B700ED707F /* DynamicProgramming.swift */; };
 		78EA02E5269E81D1002B7037 /* RadixSorted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EA02E4269E81D1002B7037 /* RadixSorted.swift */; };
+		78ED9CCC272A8B5E00361E7A /* Recursion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78ED9CCB272A8B5E00361E7A /* Recursion.swift */; };
+		78ED9CCF272AA8BA00361E7A /* RecallFirst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78ED9CCE272AA8BA00361E7A /* RecallFirst.swift */; };
 		78FB6D68266DC76B008134F9 /* BubbleSorted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FB6D67266DC76B008134F9 /* BubbleSorted.swift */; };
 /* End PBXBuildFile section */
 
@@ -148,8 +157,14 @@
 		78A2182A26871C1800FEF33D /* ShellSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShellSort.swift; sourceTree = "<group>"; };
 		78A62E81262E8088000D229B /* BinaryTreesPrint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryTreesPrint.swift; sourceTree = "<group>"; };
 		78A7A624262D8E2C00C0695A /* InorderPrinter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InorderPrinter.swift; sourceTree = "<group>"; };
+		78A92A822733D70100E05291 /* Pirater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pirater.swift; sourceTree = "<group>"; };
+		78A92A842733DA4800E05291 /* CoinExchange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinExchange.swift; sourceTree = "<group>"; };
+		78A92A872733DF5300E05291 /* DivideConquer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DivideConquer.swift; sourceTree = "<group>"; };
 		78BE8897261E87EB006D645A /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
 		78BE889B261E8821006D645A /* AbstractList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractList.swift; sourceTree = "<group>"; };
+		78C65651272B9DE70058656D /* RecallSecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecallSecord.swift; sourceTree = "<group>"; };
+		78C65653272B9E060058656D /* RecallThird.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecallThird.swift; sourceTree = "<group>"; };
+		78C65655272BD9A60058656D /* RecallLeetCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecallLeetCode.swift; sourceTree = "<group>"; };
 		78CECBBD2627E13A00BEB594 /* SingleQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleQueue.swift; sourceTree = "<group>"; };
 		78CECBC12627F0D600BEB594 /* SingleDeque.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleDeque.swift; sourceTree = "<group>"; };
 		78CECBCB26281D4600BEB594 /* CircleQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleQueue.swift; sourceTree = "<group>"; };
@@ -163,7 +178,10 @@
 		78D53AB526A672CF001715E1 /* UnionFind_QU_Rank_PS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnionFind_QU_Rank_PS.swift; sourceTree = "<group>"; };
 		78D53AB726A67681001715E1 /* UnionFind_QU_Rank_PH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnionFind_QU_Rank_PH.swift; sourceTree = "<group>"; };
 		78DDC4032667A37500803FC6 /* Sorted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sorted.swift; sourceTree = "<group>"; };
+		78DE71D0273674B700ED707F /* DynamicProgramming.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicProgramming.swift; sourceTree = "<group>"; };
 		78EA02E4269E81D1002B7037 /* RadixSorted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadixSorted.swift; sourceTree = "<group>"; };
+		78ED9CCB272A8B5E00361E7A /* Recursion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recursion.swift; sourceTree = "<group>"; };
+		78ED9CCE272AA8BA00361E7A /* RecallFirst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecallFirst.swift; sourceTree = "<group>"; };
 		78FB6D67266DC76B008134F9 /* BubbleSorted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleSorted.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -326,6 +344,11 @@
 			isa = PBXGroup;
 			children = (
 				787D2FB9261DF8BF0033364A /* main.swift */,
+				78DE71CF2736749200ED707F /* 19-动态规划 */,
+				78A92A862733DF2E00E05291 /* 18-分治 */,
+				78A92A812733D64B00E05291 /* 17-贪心 */,
+				78ED9CCD272A9AD200361E7A /* 16-回溯 */,
+				78ED9CCA272A7B8C00361E7A /* 15-递归 */,
 				7877371E26A9242E00960668 /* 14-图 */,
 				78D53AA826A57290001715E1 /* 13-并查集 */,
 				78DDC3DE26665A4F00803FC6 /* 12-排序 */,
@@ -384,6 +407,23 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
+		78A92A812733D64B00E05291 /* 17-贪心 */ = {
+			isa = PBXGroup;
+			children = (
+				78A92A822733D70100E05291 /* Pirater.swift */,
+				78A92A842733DA4800E05291 /* CoinExchange.swift */,
+			);
+			path = "17-贪心";
+			sourceTree = "<group>";
+		};
+		78A92A862733DF2E00E05291 /* 18-分治 */ = {
+			isa = PBXGroup;
+			children = (
+				78A92A872733DF5300E05291 /* DivideConquer.swift */,
+			);
+			path = "18-分治";
+			sourceTree = "<group>";
+		};
 		78CECBB82627D9E500BEB594 /* 03-队列 */ = {
 			isa = PBXGroup;
 			children = (
@@ -428,6 +468,33 @@
 				786EA50D26BA4AC8006057BB /* BucketSorted.swift */,
 			);
 			path = "12-排序";
+			sourceTree = "<group>";
+		};
+		78DE71CF2736749200ED707F /* 19-动态规划 */ = {
+			isa = PBXGroup;
+			children = (
+				78DE71D0273674B700ED707F /* DynamicProgramming.swift */,
+			);
+			path = "19-动态规划";
+			sourceTree = "<group>";
+		};
+		78ED9CCA272A7B8C00361E7A /* 15-递归 */ = {
+			isa = PBXGroup;
+			children = (
+				78ED9CCB272A8B5E00361E7A /* Recursion.swift */,
+			);
+			path = "15-递归";
+			sourceTree = "<group>";
+		};
+		78ED9CCD272A9AD200361E7A /* 16-回溯 */ = {
+			isa = PBXGroup;
+			children = (
+				78ED9CCE272AA8BA00361E7A /* RecallFirst.swift */,
+				78C65651272B9DE70058656D /* RecallSecord.swift */,
+				78C65653272B9E060058656D /* RecallThird.swift */,
+				78C65655272BD9A60058656D /* RecallLeetCode.swift */,
+			);
+			path = "16-回溯";
 			sourceTree = "<group>";
 		};
 		78EF76E7264D453E0086D887 /* 09-哈希表 */ = {
@@ -497,6 +564,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78ED9CCF272AA8BA00361E7A /* RecallFirst.swift in Sources */,
 				7877371B26A8420E00960668 /* GenericUnionFind.swift in Sources */,
 				78BE8898261E87EB006D645A /* List.swift in Sources */,
 				784027E92626D51E00C8A88A /* LinkeExercises.swift in Sources */,
@@ -509,6 +577,8 @@
 				7855AC5F262D33E800FF5A51 /* BinarySearchTree.swift in Sources */,
 				78D53AAE26A58009001715E1 /* UnionFind_QU.swift in Sources */,
 				780AB0862645385E00C7D6CF /* BinaryBalanceTree.swift in Sources */,
+				78ED9CCC272A8B5E00361E7A /* Recursion.swift in Sources */,
+				78A92A832733D70100E05291 /* Pirater.swift in Sources */,
 				7857C8ED264A88A000A3E5DB /* Map.swift in Sources */,
 				7877372026A94AD700960668 /* Graph.swift in Sources */,
 				784FAA8C26366B7100BC5636 /* BinaryTreeTest.swift in Sources */,
@@ -517,9 +587,11 @@
 				7855AC57262D2EA700FF5A51 /* Node.swift in Sources */,
 				781C0362263A85830045290F /* BinaryBalanceSearchTree.swift in Sources */,
 				78A7A625262D8E2C00C0695A /* InorderPrinter.swift in Sources */,
+				78A92A852733DA4800E05291 /* CoinExchange.swift in Sources */,
 				78DDC4042667A37500803FC6 /* Sorted.swift in Sources */,
 				783089B426218F78002CDD2E /* CircleSingleLineList.swift in Sources */,
 				7855AC68262D7EBE00FF5A51 /* Printer.swift in Sources */,
+				78DE71D1273674B700ED707F /* DynamicProgramming.swift in Sources */,
 				783089BA262191FA002CDD2E /* ListNode.swift in Sources */,
 				78BE889C261E8821006D645A /* AbstractList.swift in Sources */,
 				78D53AB026A66BA2001715E1 /* UnionFind_QU_Size.swift in Sources */,
@@ -541,14 +613,17 @@
 				78904842261EDB840092F866 /* DoubleLinkList.swift in Sources */,
 				7877372626A94CD200960668 /* EdgeInfo.swift in Sources */,
 				78CECBC22627F0D600BEB594 /* SingleDeque.swift in Sources */,
+				78A92A882733DF5300E05291 /* DivideConquer.swift in Sources */,
 				78EA02E5269E81D1002B7037 /* RadixSorted.swift in Sources */,
 				7840817D264FA5E900774D2D /* HashMap.swift in Sources */,
 				780AB08A2645430000C7D6CF /* BinaryTree.swift in Sources */,
 				7884400326B3A1B300422385 /* MinHeap.swift in Sources */,
+				78C65652272B9DE70058656D /* RecallSecord.swift in Sources */,
 				7855AC64262D7A2F00FF5A51 /* Extension.swift in Sources */,
 				783C3CAD264A740D0029EBD7 /* ListSet.swift in Sources */,
 				780C30F22662199E00E36067 /* BinaryHeap.swift in Sources */,
 				78CECBBE2627E13A00BEB594 /* SingleQueue.swift in Sources */,
+				78C65656272BD9A60058656D /* RecallLeetCode.swift in Sources */,
 				78D53AB826A67681001715E1 /* UnionFind_QU_Rank_PH.swift in Sources */,
 				78D53AB226A66D13001715E1 /* UnionFind_QU_Rank.swift in Sources */,
 				783089C62622D22E002CDD2E /* Statical.swift in Sources */,
@@ -556,6 +631,7 @@
 				78D53AB426A66EE8001715E1 /* UnionFind_QU_Rank_PC.swift in Sources */,
 				7855AC5B262D313700FF5A51 /* BinaryTreeInfo.swift in Sources */,
 				7884400526B3A1D800422385 /* MaxHeap.swift in Sources */,
+				78C65654272B9E060058656D /* RecallThird.swift in Sources */,
 				78D53AAC26A57CFD001715E1 /* UnionFind_QF.swift in Sources */,
 				78A0A3E2264B864D00063029 /* TreeMap.swift in Sources */,
 				7877372A26A9551D00960668 /* Vertex.swift in Sources */,

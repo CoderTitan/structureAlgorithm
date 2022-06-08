@@ -7,13 +7,14 @@
 
 import Foundation
 
-//GraphTest<Int>.bfsTest(0, data: GraphData.BFS_02)
-//
-//GraphTest<String>.dfsTest("a", data: GraphData.DFS_02)
-//GraphTest<String>.dfsCycleTest("a", data: GraphData.DFS_02)
-//
-//GraphTest<Int>.topSortTest(GraphData.TOPO)
+let begin = Date().timeIntervalSince1970
+let code = DynamicProgramming.maxValue(10, values: [6, 3, 5, 4, 6], weights: [2, 2, 6, 5, 4])
+print(code)
 
-//GraphTest<Double>.mstPrim(GraphData.MST_01)
-//GraphTest<Int>.mstKruskal(GraphData.MST_01)
 
+let end = Date().timeIntervalSince1970
+print("time = \(end - begin)")
+
+
+//"mhunuzqrkzsnidwbun"
+//"szulspmhwpazoxijwbq"
